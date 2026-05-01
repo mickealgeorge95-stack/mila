@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> I Love you ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+  background: radial-gradient(#0b0c40, #1a1a2e);
+  color: #fff;
+  text-align: center;
+}
+
+
+#bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+  filter: brightness(0.6);
+}
+
+
+h1 {
+  font-size: 3em;
+  margin-top: 40px;
+  font-family: 'Sacramento', cursive;
+  animation: fadeDown 2s;
+  padding: 0 10px;
+}
+
+.slider {
+  width: 90%;
+  max-width: 400px;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.8s ease-in-out;
+}
+
+.slides img {
+  width: 100%;
+  flex-shrink: 0;
+  border-radius: 20px;
+}
+
+.message {
+  max-width: 90%;
+  margin: 30px auto;
+  font-size: 1.3em;
+  background: rgba(0,0,0,0.35);
+  padding: 25px;
+  border-radius: 25px;
+  animation: fadeUp 3s;
+}
+
+#musicBtn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 10;
+}
+
+
+footer {
+  margin: 40px 0 20px 0;
+  opacity: 0.7;
+  font-size: 0.9em;
+}
+
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 2s infinite alternate;
+}
+
+
+@keyframes fadeDown {from {opacity:0; transform: translateY(-30px);} to {opacity:1; transform: translateY(0);}}
+@keyframes fadeUp {from {opacity:0; transform: translateY(30px);} to {opacity:1; transform: translateY(0);}}
+@keyframes twinkle {from {opacity:0;} to {opacity:1;}}
+</style>
+</head>
+
+<body>
+
+<video autoplay muted loop id="bg-video">
+  <source src="fireworks.mp4" type="video/mp4">
+</video>
+
+<h1>I Love u Mila❤️</h1>
+
+
+<div class="slider">
+  <div class="slides">
+    <img src="photo_2026-05-01_15-02-53.jpg" alt="Us">
+    <img src="photo_2026-05-01_14-55-01.jpg" alt="Us">
+    <img src="photo_2026-05-01_14-54-53.jpg" alt="Us">
+    <img src="photo_2026-05-01_14-55-16.jpg" alt="Us">
+    <img src="photo_2026-05-01_15-05-19.jpg" alt="Us">
+  </div>
+</div>
+
+<div class="message">
+  <p>
+You’re the only girl who made me fall in love. I don’t really know what to say, but I love you, and I hope I can see you and marry you someday.❤️😘 
+ </div>
+
+<button id="musicBtn">🎵 Play / Pause Music</button>
+
+<footer>Made with Mickool just for you ❤️ </footer>
+
+<audio id="music" loop>
+  <source src="trimmed_audio.mp3" type="audio/mp3">
+</audio>
+
+<script>
+
+let index = 0;
+const slides = document.querySelector('.slides');
+const total = slides.children.length;
+
+setInterval(() => {
+  index++;
+  if(index >= total) index = 0;
+  slides.style.transform = `translateX(-${index * 100}%)`;
+}, 3000);
+
+for(let i=0; i<100; i++){
+  let star = document.createElement('div');
+  star.className = 'star';
+  star.style.top = Math.random() * window.innerHeight + 'px';
+  star.style.left = Math.random() * window.innerWidth + 'px';
+  star.style.width = star.style.height = Math.random()*3 + 1 + 'px';
+  document.body.appendChild(star);
+}
+
+
+const music = document.getElementById('music');
+const btn = document.getElementById('musicBtn');
+btn.addEventListener('click', () => {
+  if(music.paused){ music.play(); btn.innerText="🎵 Pause Music"; } 
+  else { music.pause(); btn.innerText="🎵 Play Music"; }
+});
+</script>
+
+
+</body>
+</html>
